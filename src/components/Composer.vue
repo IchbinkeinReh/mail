@@ -335,23 +335,23 @@ export default {
 	},
 	computed: {
 		aliases() {
-			let cnt = 0;
-		    const aliases = [];
-			const accounts = this.$store.getters.accounts.filter((a) => !a.isUnified);
+			let cnt = 0
+			const aliases = []
+			const accounts = this.$store.getters.accounts.filter((a) => !a.isUnified)
 			accounts.forEach((account) => {
-				account.aliasId = null;
-				account.selectId = cnt++;
-				aliases.push(account);
+				account.aliasId = null
+				account.selectId = cnt++
+				aliases.push(account)
 				account.aliases.forEach((alias) => {
-					const accountCopy = JSON.parse(JSON.stringify(account));
-					accountCopy.aliasId = alias.id;
-					accountCopy.selectId = cnt++;
-					accountCopy.name = alias.name;
-					accountCopy.emailAddress = alias.alias;
-					aliases.push(accountCopy);
-				});
-			});
-			return aliases;
+					const accountCopy = JSON.parse(JSON.stringify(account))
+					accountCopy.aliasId = alias.id
+					accountCopy.selectId = cnt++
+					accountCopy.name = alias.name
+					accountCopy.emailAddress = alias.alias
+					aliases.push(accountCopy)
+				})
+			})
+			return aliases
 		},
 		allRecipients() {
 			return this.selectTo.concat(this.selectCc).concat(this.selectBcc)

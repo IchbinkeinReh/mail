@@ -3,7 +3,7 @@ import axios from '@nextcloud/axios'
 
 export const createAlias = (account, data) => {
 	const url = generateUrl(`/apps/mail/api/accounts/{id}/aliases`, {
-		id: account.accountId
+		id: account.accountId,
 	})
 
 	return axios
@@ -21,7 +21,7 @@ export const createAlias = (account, data) => {
 export const deleteAlias = (account, alias) => {
 	const url = generateUrl('/apps/mail/api/accounts/{id}/aliases/{aliasId}', {
 		id: account.accountId,
-		aliasId: alias.id
+		aliasId: alias.id,
 	})
 
 	return axios.delete(url).then((resp) => resp.data)

@@ -18,19 +18,19 @@
   -->
 
 <template>
-	<div class="section" id="aliases">
+	<div id="aliases" class="section">
 		<h2>{{ t('mail', 'Aliases') }}</h2>
 		<div id="aliases-list">
 			<table class="grid">
 				<tbody>
-					<tr v-for="alias in aliases" :key="alias.id">
-						<td style="padding:0 5px 0 5px;">
-							{{ alias.alias }}
+					<tr v-for="curAlias in aliases" :key="curAlias.id">
+						<td>
+							{{ curAlias.alias }}
 						</td>
-						<td style="padding:0 5px 0 5px;">
-							{{ alias.name }}
+						<td>
+							{{ curAlias.name }}
 						</td>
-						<td style="padding:0 5px 0 5px;">
+						<td>
 							<button
 								class="icon-delete"
 								@click="deleteAlias(alias)"
@@ -80,7 +80,7 @@ export default {
 		return {
 			loading: false,
 			aliases: this.account.aliases,
-			alias: { aliasName: '', alias: '' }
+			alias: {aliasName: '', alias: ''}
 		}
 	},
 	methods: {
@@ -105,7 +105,7 @@ export default {
 				.dispatch('createAlias', {account: this.account, aliasToAdd: this.alias})
 				.then(() => {
 					logger.info('alias added')
-					this.alias = { aliasName: '', alias: '' }
+					this.alias = {aliasName: '', alias: ''}
 					this.loading = false
 				})
 				.catch((error) => {
@@ -131,6 +131,9 @@ input {
 	width: 195px;
 }
 table {
-	margin-bottom: .5rem;
+	margin-bottom: 0.5rem;
+}
+td {
+	padding:0px 5px 0px 5px;
 }
 </style>

@@ -53,10 +53,10 @@ class Alias extends Entity implements JsonSerializable {
 	}
 
 	public function jsonSerialize() {
-                $result = [
-                        'id' => $this->getId(),
-                        'name' => $this->getName(),
-                        'alias' => $this->getAlias()
+		$result = [
+			'id' => $this->getId(),
+			'name' => $this->getName(),
+			'alias' => $this->getAlias()
 		];
 		return $result;
 	}
