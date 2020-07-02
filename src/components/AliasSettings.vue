@@ -31,10 +31,7 @@
 							{{ curAlias.name }}
 						</td>
 						<td>
-							<button
-								class="icon-delete"
-								@click="deleteAlias(alias)"
-							></button>
+							<button class="icon-delete" @click="deleteAlias(alias)"></button>
 						</td>
 					</tr>
 				</tbody>
@@ -80,7 +77,7 @@ export default {
 		return {
 			loading: false,
 			aliases: this.account.aliases,
-			alias: {aliasName: '', alias: ''}
+			alias: {aliasName: '', alias: ''},
 		}
 	},
 	methods: {
@@ -134,6 +131,6 @@ table {
 	margin-bottom: 0.5rem;
 }
 td {
-	padding:0px 5px 0px 5px;
+	padding: 0px 5px 0px 5px;
 }
 </style>

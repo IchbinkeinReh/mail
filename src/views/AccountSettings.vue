@@ -53,7 +53,7 @@ export default {
 		EditorSettings,
 		Navigation,
 		SignatureSettings,
-		AliasSettings
+		AliasSettings,
 	},
 	data() {
 		const account = this.$store.getters.getAccount(this.$route.params.accountId)

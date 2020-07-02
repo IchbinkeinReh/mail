@@ -60,5 +60,4 @@ class Alias extends Entity implements JsonSerializable {
 		];
 		return $result;
 	}
-
 }

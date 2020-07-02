@@ -705,5 +705,5 @@ export default {
 		return deleteAlias(account, aliasToDelete).then((alias) => {
 			commit('deleteAlias', {account, alias: aliasToDelete})
 		})
-	}
+	},
 }
