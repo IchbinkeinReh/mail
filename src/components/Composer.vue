@@ -9,7 +9,7 @@
 				v-model="selectedAlias"
 				:options="aliases"
 				label="name"
-				track-by="id"
+				track-by="selectId"
 				:searchable="false"
 				:hide-selected="true"
 				:custom-label="formatAliases"
@@ -335,7 +335,23 @@ export default {
 	},
 	computed: {
 		aliases() {
-			return this.$store.getters.accounts.filter((a) => !a.isUnified)
+			let cnt = 0;
+		    const aliases = [];
+			const accounts = this.$store.getters.accounts.filter((a) => !a.isUnified);
+			accounts.forEach((account) => {
+				account.aliasId = null;
+				account.selectId = cnt++;
+				aliases.push(account);
+				account.aliases.forEach((alias) => {
+					const accountCopy = JSON.parse(JSON.stringify(account));
+					accountCopy.aliasId = alias.id;
+					accountCopy.selectId = cnt++;
+					accountCopy.name = alias.name;
+					accountCopy.emailAddress = alias.alias;
+					aliases.push(accountCopy);
+				});
+			});
+			return aliases;
 		},
 		allRecipients() {
 			return this.selectTo.concat(this.selectCc).concat(this.selectBcc)
@@ -465,6 +481,7 @@ export default {
 		getMessageData(uid) {
 			return {
 				account: this.selectedAlias.id,
+				aliasId: this.selectedAlias.aliasId,
 				to: this.selectTo.map(this.recipientToRfc822).join(', '),
 				cc: this.selectCc.map(this.recipientToRfc822).join(', '),
 				bcc: this.selectBcc.map(this.recipientToRfc822).join(', '),

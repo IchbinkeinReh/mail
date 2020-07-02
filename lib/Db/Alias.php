@@ -23,6 +23,8 @@ declare(strict_types=1);
 
 namespace OCA\Mail\Db;
 
+use JsonSerializable;
+
 use OCP\AppFramework\Db\Entity;
 
 /**
@@ -33,7 +35,7 @@ use OCP\AppFramework\Db\Entity;
  * @method void setAlias(string $alias)
  * @method string getAlias()
  */
-class Alias extends Entity {
+class Alias extends Entity implements JsonSerializable {
 
 	/** @var int */
 	protected $accountId;
@@ -49,4 +51,14 @@ class Alias extends Entity {
 		$this->addType('name', 'string');
 		$this->addType('alias', 'string');
 	}
+
+	public function jsonSerialize() {
+                $result = [
+                        'id' => $this->getId(),
+                        'name' => $this->getName(),
+                        'alias' => $this->getAlias()
+		];
+		return $result;
+	}
+
 }

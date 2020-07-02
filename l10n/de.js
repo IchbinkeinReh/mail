@@ -11,6 +11,7 @@ OC.L10N.register(
     "Auto" : "Automatisch",
     "Name" : "Name",
     "Mail Address" : "E-Mail-Adresse",
+    "Aliases" : "Aliase",
     "Password" : "Passwort",
     "Manual" : "Manuell",
     "IMAP Settings" : "IMAP-Einstellungen",
