@@ -84,12 +84,6 @@ class IMAPClientFactory {
 					],
 				],
 			];
-//			if ($this->cacheFactory->isAvailable()) {
-//				$params['cache'] = [
-//					'backend' => new Cache([
-//						'cacheob' => $this->cacheFactory->createDistributed(md5((string)$account->getId())),
-//					])];
-			}
 			if ($this->config->getSystemValue('debug', false)) {
 				$params['debug'] = $this->config->getSystemValue('datadirectory') . '/horde_imap.log';
 			}
